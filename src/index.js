@@ -1,11 +1,9 @@
-// No nodejs nós usamos require para pegar pacotes, ou modulos
 const express = require("express");
-const { teste } = require("./module");
+const { userRouter } = require("./routes/userRoutes");
 const app = express();
+require("dotenv").config();
 
-// Respond with "hello world" when a GET request is made to the homepage
-app.get("/", (req, res) => {
-  res.send("hello world");
-});
+app.use(express.json());
+app.use(userRouter);
 
 app.listen(3000);
